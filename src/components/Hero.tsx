@@ -49,7 +49,7 @@ export default function Hero() {
         <video 
           ref={videoRef}
           src="/full-alpha.webm" 
-          className="w-[110%] md:w-[111%] max-w-none h-auto object-contain drop-shadow-2xl scale-125 md:scale-100 origin-center"
+          className="w-[105%] md:w-[111%] max-w-none h-auto object-contain drop-shadow-2xl scale-125 md:scale-100 origin-center"
           autoPlay
           muted
           loop

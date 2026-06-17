@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-colors duration-300 text-[#240605]">
       <div className="flex items-center justify-between px-3 md:px-8 py-6 md:py-4">
         <div className="flex items-center gap-2">
-          <Link href="/" className="hover:opacity-80 transition-opacity font-black text-3xl tracking-tighter capitalize" style={{ fontFamily: "'Aktiv Grotesk', sans-serif" }}>
+          <Link href="/" className="hover:opacity-80 transition-opacity font-normal text-5xl  capitalize" style={{ fontFamily: "'Brush Script MT', cursive" }}>
             Vantara
           </Link>
         </div>
