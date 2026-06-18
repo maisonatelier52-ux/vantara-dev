@@ -6,37 +6,37 @@ import React, { useState, useEffect } from 'react';
 const FLAVOURS = [
   {
     id: 1,
-    title: "Filter Coffee",
+    title: "Filter\nCoffee",
     leftImage: "/coffee.webp",
     cupImage: "/coffee-cup.webp"
   },
   {
     id: 2,
-    title: "Cookies n' Cream",
+    title: "Cookies n'\nCream",
     leftImage: "/cookie-cream.webp",
     cupImage: "/cookie-cream-cup.webp"
   },
   {
     id: 3,
-    title: "Guava Chilli",
+    title: "Guava\nChilli",
     leftImage: "/guava.webp",
     cupImage: "/guava-cup.webp"
   },
   {
     id: 4,
-    title: "Kesar Peda",
+    title: "Kesar\nPeda",
     leftImage: "/peda.webp",
     cupImage: "/peda-cup.webp"
   },
   {
     id: 5,
-    title: "Butter Caramel",
+    title: "Butter\nCaramel",
     leftImage: "/caramel.webp",
     cupImage: "/caramel-cup.webp"
   },
   {
     id: 6,
-    title: "Vanilla Strawberry",
+    title: "Vanilla\nStrawberry",
     leftImage: "/strawberry-vanilla.webp",
     cupImage: "/strawberry-cup.webp"
   }
@@ -94,7 +94,7 @@ export default function Flavours() {
               >
                 {/* TEXT: Comes from the top */}
                 <h3 
-                  className={`text-5xl md:text-7xl font-bold text-vantara-text tracking-tighter text-center uppercase mb-12 transition-transform duration-1000 ease-in-out ${
+                  className={`text-8xl md:text-8xl font-medium text-vantara-text tracking-tighter text-center uppercase -mb-30 transition-transform duration-1000 ease-in-out whitespace-pre-line leading-[0.85] ${
                     isActive ? 'translate-y-0' : '-translate-y-20'
                   }`}
                   style={{ fontFamily: "'Aktiv Grotesk', sans-serif" }}
@@ -104,12 +104,10 @@ export default function Flavours() {
 
                 {/* CUP ICE CREAM: Comes from the bottom */}
                 <div 
-                  className={`relative w-64 h-64 md:w-96 md:h-96 transition-transform duration-1000 ease-in-out ${
+                  className={`relative w-64 h-64 md:w-120 md:h-120 transition-transform duration-1000 ease-in-out ${
                     isActive ? 'translate-y-0' : 'translate-y-20'
                   }`}
                 >
-                  {/* Fallback circle if image is missing */}
-                  <div className="absolute inset-0 bg-vantara-accent/20 rounded-full" />
                   <img
                     src={flavour.cupImage}
                     alt={`${flavour.title} cup`}
