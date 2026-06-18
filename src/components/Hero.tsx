@@ -10,11 +10,12 @@ export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const liquidPathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
-    if (!container.current || !textRef.current) return;
+    if (!container.current || !textRef.current || !liquidPathRef.current) return;
 
-    // Simple parallax effect for the text
+    // Parallax on the hero text
     gsap.to(textRef.current, {
       y: 150,
       opacity: 0,
@@ -24,17 +25,41 @@ export default function Hero() {
         start: 'top top',
         end: 'bottom top',
         scrub: true,
-      }
+      },
     });
 
+    // Liquid SVG path morphing upward as user scrolls away from hero
+    // Starts as a flat line at the very bottom, curves up like liquid rising
+    gsap.fromTo(
+      liquidPathRef.current,
+      {
+        attr: { d: 'M 0 100 Q 50 100 100 100 L 100 100 L 0 100 Z' },
+      },
+      {
+        attr: { d: 'M 0 0 Q 50 40 100 0 L 100 100 L 0 100 Z' },
+        ease: 'none',
+        scrollTrigger: {
+          trigger: container.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      }
+    );
   }, []);
 
   return (
-    <div ref={container} className="relative w-full h-[100dvh] bg-vantara-bg items-center justify-center overflow-hidden flex flex-col">
+    <div
+      ref={container}
+      className="sticky top-0 z-0 w-full h-[100dvh] bg-vantara-bg items-center justify-center overflow-hidden flex flex-col"
+    >
       <div className="absolute inset-0 z-0 bg-vantara-bg" />
-      
-      {/* Background Text */}
-      <div ref={textRef} className="relative z-10 flex flex-col gap-4 text-vantara-text items-center justify-center mt-140">
+
+      {/* Hero Text */}
+      <div
+        ref={textRef}
+        className="relative z-10 flex flex-col gap-4 text-vantara-text items-center justify-center mt-140"
+      >
         <h1 className="text-3xl md:text-3xl lg:text-[6rem] tracking-tighter leading-[0.85] text-center font-medium whitespace-nowrap drop-shadow-lg">
           REAL MILK. <br /> REAL STORIES.
         </h1>
@@ -44,17 +69,32 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Centered Dropping Ice Cream Video */}
+      {/* Ice Cream Video */}
       <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none overflow-visible">
-        <video 
+        <video
           ref={videoRef}
-          src="/full-alpha.webm" 
+          src="/full-alpha.webm"
           className="w-[105%] md:w-[111%] max-w-none h-auto object-contain drop-shadow-2xl scale-125 md:scale-100 origin-center"
           autoPlay
           muted
           loop
           playsInline
         />
+      </div>
+
+      {/* Liquid SVG overlay — rises from bottom as user scrolls */}
+      <div className="absolute inset-0 z-30 pointer-events-none">
+        <svg
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          className="w-full h-full"
+          style={{ fill: '#240605' }}
+        >
+          <path
+            ref={liquidPathRef}
+            d="M 0 100 Q 50 100 100 100 L 100 100 L 0 100 Z"
+          />
+        </svg>
       </div>
     </div>
   );

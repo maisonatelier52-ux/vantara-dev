@@ -1,12 +1,18 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import RealStories from '@/components/RealStories';
 
 export default function Home() {
   return (
     <main className="w-full bg-vantara-bg min-h-screen">
       <Navbar />
-      <Hero />
-      
+      <div className="relative">
+        <Hero />
+        
+        {/* Real Stories Section */}
+        <RealStories />
+      </div>
+
       {/* Flavours Section */}
       <section id="flavours" className="relative min-h-screen bg-transparent md:bg-[#FAF8F1] overflow-hidden flex items-center justify-center">
         <div className="relative z-10 text-center max-w-2xl px-4">
