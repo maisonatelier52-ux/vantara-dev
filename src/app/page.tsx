@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import RealStories from '@/components/RealStories';
+import Flavours from '@/components/Flavours';
 
 export default function Home() {
   return (
@@ -14,20 +15,7 @@ export default function Home() {
       </div>
 
       {/* Flavours Section */}
-      <section id="flavours" className="relative min-h-screen bg-transparent md:bg-[#FAF8F1] overflow-hidden flex items-center justify-center">
-        <div className="relative z-10 text-center max-w-2xl px-4">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-vantara-text tracking-tighter">OUR FLAVOURS</h2>
-          <p className="text-lg md:text-xl text-vantara-text/80 mb-8">
-            Handcrafted with the finest A2 milk and real ingredients. No artificial colors, no shortcuts. Just pure indulgence.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-             <div className="aspect-square bg-vantara-accent/20 rounded-xl flex items-center justify-center text-vantara-accent font-bold">Coffee</div>
-             <div className="aspect-square bg-vantara-accent/20 rounded-xl flex items-center justify-center text-vantara-accent font-bold">Cookies n Cream</div>
-             <div className="aspect-square bg-vantara-accent/20 rounded-xl flex items-center justify-center text-vantara-accent font-bold">Guava Chilli</div>
-             <div className="aspect-square bg-vantara-accent/20 rounded-xl flex items-center justify-center text-vantara-accent font-bold">Kesar Peda</div>
-          </div>
-        </div>
-      </section>
+      <Flavours />
 
       {/* Process Section */}
       <section id="process" className="relative min-h-screen bg-vantara-text text-vantara-bg overflow-hidden flex flex-col items-center justify-center py-20">
