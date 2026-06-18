@@ -10,6 +10,7 @@ export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoWrapRef = useRef<HTMLDivElement>(null);
   const liquidPathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
@@ -28,8 +29,22 @@ export default function Hero() {
       },
     });
 
+    // Fade the fixed video out as the hero scrolls away
+    // This prevents it from floating over other sections
+    if (videoWrapRef.current) {
+      gsap.to(videoWrapRef.current, {
+        opacity: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: container.current,
+          start: '60% top',   // start fading when 60% of hero has scrolled past
+          end: 'bottom top',  // fully gone when hero is off screen
+          scrub: true,
+        },
+      });
+    }
+
     // Liquid SVG path morphing upward as user scrolls away from hero
-    // Starts as a flat line at the very bottom, curves up like liquid rising
     gsap.fromTo(
       liquidPathRef.current,
       {
@@ -69,8 +84,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Ice Cream Video */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none overflow-visible">
+      {/* Ice Cream Video — fixed so it escapes overflow-hidden and sits above navbar */}
+      {/* videoWrapRef controls opacity via GSAP so it fades out as hero scrolls away */}
+      <div ref={videoWrapRef} className="fixed inset-0 z-60 flex items-center justify-center pointer-events-none">
         <video
           ref={videoRef}
           src="/full-alpha.webm"

@@ -1,11 +1,33 @@
+"use client";
+
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Mark as scrolled once the user has scrolled past the hero (roughly 100vh)
+      setScrolled(window.scrollY > window.innerHeight * 0.8);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run once on mount in case page is already scrolled
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-colors duration-300 text-[#240605]">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 text-[#240605] ${
+        scrolled ? 'bg-vantara-bg' : 'bg-transparent'
+      }`}
+    >
       <div className="flex items-center justify-between px-3 md:px-8 py-6 md:py-4">
         <div className="flex items-center gap-2">
-          <Link href="/" className="hover:opacity-80 transition-opacity font-normal text-5xl  capitalize" style={{ fontFamily: "'Brush Script MT', cursive" }}>
+          <Link href="/" className="hover:opacity-80 transition-opacity font-normal text-5xl capitalize" style={{ fontFamily: "'Brush Script MT', cursive" }}>
             Vantara
           </Link>
         </div>
