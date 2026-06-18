@@ -39,7 +39,7 @@ export default function RealStories() {
   return (
     // The outer container. Because we have 3 sticky 100vh sections, we don't strictly need a fixed height wrapper.
     // The natural flow of the 3 child divs will create the scrolling track.
-    <div ref={wrapperRef} className="relative w-full bg-vantara-text pb-10">
+    <div ref={wrapperRef} className="relative w-full bg-vantara-text">
 
       {/* --- SLIDE 1: Background & Text --- */}
       <div className="sticky top-0 w-full h-[100vh] overflow-hidden">
@@ -98,7 +98,7 @@ export default function RealStories() {
       */}
       <div className="sticky top-0 w-full h-[100vh] pointer-events-none z-30">
         <div
-          className="absolute bottom-[2%] left-[5%] md:left-[10%] w-[88vw] sm:w-[450px] md:w-[700px] lg:w-[900px] aspect-[3/4] md:aspect-[3/2] pointer-events-none"
+          className="absolute bottom-[18%] left-[5%] md:left-[10%] w-[88vw] sm:w-[450px] md:w-[700px] lg:w-[900px] aspect-[3/4] md:aspect-[3/2] pointer-events-none"
           style={{ transform: 'rotate(-20deg)' }}
         >
           {/* Mobile */}
