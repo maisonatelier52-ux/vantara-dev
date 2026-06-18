@@ -1,15 +1,29 @@
 "use client";
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Mark as scrolled once the user has scrolled past the hero (roughly 100vh)
-      setScrolled(window.scrollY > window.innerHeight * 0.8);
+      const currentScrollY = window.scrollY;
+      
+      // Determine if we should show solid background (past 80% of window height)
+      setScrolled(currentScrollY > window.innerHeight * 0.8);
+
+      // Determine scroll direction to hide/show navbar
+      // Only hide if we've scrolled down a bit (e.g. past 100px) so it doesn't flicker at the very top
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setHidden(true); // Scrolling down
+      } else if (currentScrollY < lastScrollY.current) {
+        setHidden(false); // Scrolling up
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -21,9 +35,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 text-[#240605] ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 text-[#240605] ${
         scrolled ? 'bg-vantara-bg' : 'bg-transparent'
-      }`}
+      } ${hidden ? '-translate-y-full' : 'translate-y-0'}`}
     >
       <div className="flex items-center justify-between px-3 md:px-8 py-6 md:py-4">
         <div className="flex items-center gap-2">
