@@ -194,7 +194,7 @@ export default function Flavours() {
               >
                 {/* TEXT: Comes from the top */}
                 <h3 
-                  className={`text-8xl md:text-8xl font-medium text-vantara-text tracking-tighter text-center uppercase -mb-30 transition-transform duration-1000 ease-in-out whitespace-pre-line leading-[0.85] ${
+                  className={`text-8xl md:text-8xl font-medium text-vantara-text tracking-tighter text-center uppercase -mb-25 transition-transform duration-1000 ease-in-out whitespace-pre-line leading-[0.85] ${
                     isActive ? 'translate-y-0' : '-translate-y-20'
                   }`}
                   style={{ fontFamily: "var(--font-barlow-condensed), sans-serif" }}
