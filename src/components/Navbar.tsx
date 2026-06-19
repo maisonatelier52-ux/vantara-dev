@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image';
+
 import { useEffect, useState, useRef } from 'react';
 
 export default function Navbar() {
@@ -43,7 +43,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between px-3 md:px-8 py-6 md:py-4">
         <div className="flex items-center gap-2">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Image src="/LOGO-vantara.svg" alt="Vantara" width={180} height={48} priority style={{ width: 'auto', height: '3rem' }} />
+            <img src="/LOGO-vantara.svg" alt="Vantara" className="h-12 w-auto" />
           </Link>
         </div>
         <div className="flex items-center gap-0 md:gap-3 lg:gap-5 font-semibold">
