@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import RealStories from '@/components/RealStories';
 import Flavours from '@/components/Flavours';
 import Process from '@/components/Process';
+import Moments from '@/components/Moments';
 
 export default function Home() {
   return (
@@ -20,6 +21,9 @@ export default function Home() {
 
       {/* Process Section */}
       <Process />
+
+      {/* Moments Worth Sharing Section */}
+      <Moments />
       
       {/* Footer */}
       <footer className="bg-vantara-bg text-vantara-text py-12 border-t border-vantara-text/10 text-center">
