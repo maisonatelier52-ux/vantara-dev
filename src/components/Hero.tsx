@@ -93,8 +93,13 @@ export default function Hero() {
           className="w-[105%] md:w-[111%] max-w-none h-auto object-contain drop-shadow-2xl scale-125 md:scale-100 origin-center"
           autoPlay
           muted
-          loop
           playsInline
+          onEnded={() => {
+            if (videoRef.current) {
+              videoRef.current.currentTime = 4.5;
+              videoRef.current.play();
+            }
+          }}
         />
       </div>
 
