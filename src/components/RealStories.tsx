@@ -54,7 +54,7 @@ export default function RealStories() {
         {/* Text content */}
         <div className="relative z-10 flex flex-col items-start justify-center w-full h-full max-w-7xl mx-auto px-4 md:px-8 py-20">
           <h2
-            className="font-black text-[12vw] md:text-[6rem] lg:text-[7rem] leading-[0.85] tracking-tighter uppercase text-vantara-bg"
+            className="font-normal text-[12vw] md:text-[6rem] lg:text-[7rem] leading-[0.85] tracking-tighter uppercase text-vantara-bg"
             style={{ fontFamily: "'Aktiv Grotesk', sans-serif" }}
           >
             <div className="text-left w-full">REAL MILK.</div>
