@@ -86,11 +86,11 @@ export default function Hero() {
 
       {/* Ice Cream Video — fixed so it escapes overflow-hidden and sits above navbar */}
       {/* videoWrapRef controls opacity via GSAP so it fades out as hero scrolls away */}
-      <div ref={videoWrapRef} className="fixed inset-0 z-60 flex items-center justify-center pointer-events-none">
+      <div ref={videoWrapRef} className="fixed inset-0 z-60 pointer-events-none">
         <video
           ref={videoRef}
           src="/full-alpha.webm"
-          className="w-[105%] md:w-[111%] max-w-none h-auto object-contain drop-shadow-2xl scale-125 md:scale-100 origin-center"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[105%] md:w-[111%] max-w-none h-auto object-contain drop-shadow-2xl scale-125 md:scale-100 origin-center"
           autoPlay
           muted
           playsInline
