@@ -223,7 +223,7 @@ export default function Flavours() {
           {/* Explore All Flavours Button */}
           <div className="absolute bottom-20 z-20">
             <Link 
-              href="/408"
+              href="/"
               className="px-6 py-4 bg-[#42211D] text-[#FAF8F1] text-sm uppercase rounded-lg hover:brightness-[1.2] transition-all font-normal border border-[#42211D]"
               style={{ fontFamily: "var(--font-barlow-condensed), sans-serif" }}
             >
