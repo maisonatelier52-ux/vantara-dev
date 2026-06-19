@@ -4,6 +4,7 @@ import RealStories from '@/components/RealStories';
 import Flavours from '@/components/Flavours';
 import Process from '@/components/Process';
 import Moments from '@/components/Moments';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -26,9 +27,7 @@ export default function Home() {
       <Moments />
       
       {/* Footer */}
-      <footer className="bg-vantara-bg text-vantara-text py-12 border-t border-vantara-text/10 text-center">
-        <p className="font-semibold uppercase tracking-widest text-sm">© Vantara Creamery Clone</p>
-      </footer>
+      <Footer />
     </main>
   );
 }
