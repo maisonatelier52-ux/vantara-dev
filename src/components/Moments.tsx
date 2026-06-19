@@ -10,17 +10,17 @@ if (typeof window !== 'undefined') {
 
 const CENTER_IMG = "/telescope-main.webp";
 const PERIPHERAL_IMAGES = [
-  { src: "/telescope-one.webp", className: "top-[35%] left-[2%] w-[12vw] md:w-[10vw]" },
-  { src: "/telescope-two.webp", className: "top-[15%] left-[15%] w-[16vw] md:w-[14vw]" },
-  { src: "/telescope-three.webp", className: "top-[25%] left-[33%] w-[15vw] md:w-[12vw]" },
-  { src: "/telescope-four.webp", className: "top-[5%] left-[53%] w-[14vw] md:w-[12vw]" },
-  { src: "/telescope-five.webp", className: "top-[15%] right-[5%] w-[13vw] md:w-[11vw]" },
-  { src: "/telescope-six.webp", className: "top-[35%] right-[18%] w-[12vw] md:w-[10vw]" },
-  { src: "/telescope-seven.webp", className: "bottom-[10%] left-[5%] w-[14vw] md:w-[12vw]" },
-  { src: "/telescope-eight.webp", className: "bottom-[20%] left-[25%] w-[16vw] md:w-[14vw]" },
-  { src: "/telescope-nine.webp", className: "bottom-[15%] left-[50%] w-[12vw] md:w-[10vw]" },
-  { src: "/telescope-ten.webp", className: "bottom-[5%] right-[15%] w-[10vw] md:w-[8vw]" },
-  { src: "/telescope-eleven.webp", className: "bottom-[5%] right-[2%] w-[8vw] md:w-[6vw]" },
+  { src: "/telescope-one.webp", className: "top-[35%] left-[2%] w-[12vw] md:w-[10vw]", moveX: "-100vw", moveY: "-50vh" },
+  { src: "/telescope-two.webp", className: "top-[15%] left-[15%] w-[16vw] md:w-[14vw]", moveX: "-80vw", moveY: "-80vh" },
+  { src: "/telescope-three.webp", className: "top-[25%] left-[33%] w-[15vw] md:w-[12vw]", moveX: "-40vw", moveY: "-100vh" },
+  { src: "/telescope-four.webp", className: "top-[5%] left-[53%] w-[14vw] md:w-[12vw]", moveX: "20vw", moveY: "-100vh" },
+  { src: "/telescope-five.webp", className: "top-[15%] right-[5%] w-[13vw] md:w-[11vw]", moveX: "100vw", moveY: "-80vh" },
+  { src: "/telescope-six.webp", className: "top-[35%] right-[18%] w-[12vw] md:w-[10vw]", moveX: "100vw", moveY: "-20vh" },
+  { src: "/telescope-seven.webp", className: "bottom-[10%] left-[5%] w-[14vw] md:w-[12vw]", moveX: "-100vw", moveY: "100vh" },
+  { src: "/telescope-eight.webp", className: "bottom-[20%] left-[25%] w-[16vw] md:w-[14vw]", moveX: "-60vw", moveY: "100vh" },
+  { src: "/telescope-nine.webp", className: "bottom-[15%] left-[50%] w-[12vw] md:w-[10vw]", moveX: "10vw", moveY: "100vh" },
+  { src: "/telescope-ten.webp", className: "bottom-[5%] right-[15%] w-[10vw] md:w-[8vw]", moveX: "80vw", moveY: "100vh" },
+  { src: "/telescope-eleven.webp", className: "bottom-[5%] right-[2%] w-[8vw] md:w-[6vw]", moveX: "100vw", moveY: "100vh" },
 ];
 
 export default function Moments() {
@@ -46,24 +46,16 @@ export default function Moments() {
         }
       });
 
-      // Scatter peripheral images outwards
+      // Scatter peripheral images outwards using hardcoded paths
       pRefs.current.forEach((el, i) => {
         if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const winCenterX = window.innerWidth / 2;
-        const winCenterY = window.innerHeight / 2;
-        
-        // Multiplier to ensure they go completely off-screen
-        const moveX = (centerX - winCenterX) * 5;
-        const moveY = (centerY - winCenterY) * 5;
+        const img = PERIPHERAL_IMAGES[i];
         
         // Remove opacity: 0 so they actually appear to fly out of the viewport
-        // Apply a little zoom (scale: 1.3) and deterministic rotation
+        // Apply a little zoom (scale: 3.5) and deterministic rotation
         tl.fromTo(el, 
           { x: 0, y: 0, scale: 1, rotation: 0 },
-          { x: moveX, y: moveY, scale: 3.5, rotation: (i % 2 === 0 ? 15 : -15) }, 
+          { x: img.moveX, y: img.moveY, scale: 3.5, rotation: (i % 2 === 0 ? 15 : -15) }, 
           0
         );
       });
