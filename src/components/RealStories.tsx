@@ -55,14 +55,14 @@ export default function RealStories() {
         <div className="relative z-10 flex flex-col items-start justify-center w-full h-full max-w-7xl mx-auto px-4 md:px-8 py-20">
           <h2
             className="font-normal text-[12vw] md:text-[6rem] lg:text-[7rem] leading-[0.85] tracking-tighter uppercase text-vantara-bg"
-            style={{ fontFamily: "'Aktiv Grotesk', sans-serif" }}
+            style={{ fontFamily: "var(--font-barlow-condensed), sans-serif" }}
           >
             <div className="text-left w-full">REAL MILK.</div>
             <div className="text-left w-full">REAL STORIES.</div>
           </h2>
 
-          <div className="flex justify-between items-start mt-6 md:mt-8 w-full max-w-fit">
-            <p className="font-semibold text-[10px] md:text-sm tracking-widest uppercase text-vantara-bg">
+          <div className="flex justify-between items-start pl-2 mt-6 md:mt-8 w-full max-w-fit">
+            <p className="font-normal text-[8px] md:text-[10px] tracking-widest uppercase text-vantara-bg">
               ICECREAM SO GOOD,<br />
               YOU MELT INSIDE.
             </p>
